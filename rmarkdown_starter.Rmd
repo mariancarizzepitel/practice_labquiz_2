@@ -1,0 +1,37 @@
+---
+title:  "6060 Practice: RMarkdown"
+author: "Marian Pitel"
+output:
+  pdf_document:
+    number_sections: yes
+    toc_depth: 3
+---
+
+```{r,echo=FALSE,message=FALSE, warning=FALSE}
+# Code goes in blocks like this
+
+# load libraries
+library(tidyverse)
+library(apaTables)
+
+#Load data 
+analytic_data        <- read_csv("analytic_data.csv")
+
+```
+
+# Relations among variables for women
+
+Below are the correlations among the variables for all participants (men and women).
+Note you will need to use just women in your rmarkdown document.
+
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+psych::pairs.panels(analytic_data_female)
+       
+```
+
+\pagebreak
+
+# Distributions
+
+
