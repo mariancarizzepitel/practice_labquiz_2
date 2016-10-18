@@ -45,6 +45,7 @@ is_bad_value <- Extraversion<0 | Extraversion>24
 Extraversion[is_bad_value] <- NA
 
 #Calculating scores
+##Check keys = FALSE disables automatic re-keying since you've already manually corrected bad values
 neg_affect <- psych::alpha(as.data.frame(na_affect_items),check.keys=FALSE)$scores
 pos_affect <- psych::alpha(as.data.frame(pa_affect_items),check.keys=FALSE)$scores
 
