@@ -1,8 +1,8 @@
 library(tidyverse)
 library(apaTables)
-library(psych)
 library(haven)
 library(dplyr)
+#NEVER!!! LOAD!!! library(psych)
 
 #Load data
 raw_data <- read_csv(file="raw_data.csv")
@@ -73,6 +73,7 @@ apa.cor.table(analytic_data_female,filename="Table_3_Female.doc",table.number=3)
 
 #Creating correlation graphs 
 ##Save figures as .tiff by exporting as image and selecting TIFF
+##BETTER WAY: psych::pairs.panels(analytic_data, lm="TRUE") so it uses smooth lines instead of curved lines
 psych::pairs.panels(analytic_data)
 psych::pairs.panels(analytic_data_male)
 psych::pairs.panels(analytic_data_female)
