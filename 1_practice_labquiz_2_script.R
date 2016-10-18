@@ -50,6 +50,10 @@ pos_affect <- psych::alpha(as.data.frame(pa_affect_items),check.keys=FALSE)$scor
 
 #Creating analytic data sets
 ##Select option is used to select only needed columns
+##Alternative 1: to select wanted variables is to simply -sex
+##e.g., analytic_data_male <- select(analytic_data_male, -sex)
+##Alternative 2: analytic_data_male <- analytic_data %>% filter(sex=="Male") %>% select(-sex)
+##Clarification: %>% means "and then" i.e., next step 
 analytic_data <- cbind(categorical_variables,pos_affect,neg_affect,Neuroticism,Extraversion)
 analytic_data_male <- filter(analytic_data,sex=="Male")
 analytic_data_male <- select(analytic_data_male,pos_affect,neg_affect,Neuroticism,Extraversion)
@@ -73,6 +77,7 @@ psych::pairs.panels(analytic_data_male)
 psych::pairs.panels(analytic_data_female)
 
 #Creating Neuroticism score histogram for Females
+##Removing binwidth will get R to set default bin width 
 my.hist <- ggplot(analytic_data_female,aes(Neuroticism))
 my.hist <- my.hist + geom_histogram(aes(y=..count..),binwidth = 0.75,fill="black",color="black")
 my.hist <- my.hist + labs(title="Neuroticism Histogram",x="Neuroticism",y="Frequency")
